@@ -8,12 +8,9 @@ function Accuracy = Accuracy(PredictOutputLable, TureLable)
 % 
 % 
 % ****************************************************************
-[TureLabelRow, ~] = size(TureLabel);
+[TureLableRow, ~] = size(TureLable);
 PostiveIndex = find(TureLable == 1);
 NegativeIndex = find(TureLable == 0);
-
-PostiveNum = find(TureLable == 1);
-NegativeNum = find(TureLable == 0);
 
 TurePostive = find(TureLable(PostiveIndex, :) == PredictOutputLable(PostiveIndex, :));
 TurePostiveNum = size(TurePostive, 1);%TP
@@ -23,6 +20,6 @@ TureNegative = find(TureLable(NegativeIndex, :) == PredictOutputLable(NegativeIn
 TureNegativeNum = size(TureNegative, 1);%TN
 % FalsePostiveNum = NegativeNum - TureNegativeNum;%FP
 
-Accuracy = (TurePostiveNum + TureNegativeNum)/ TureLabelRow;
+Accuracy = (TurePostiveNum + TureNegativeNum)/ TureLableRow;
 end
 
