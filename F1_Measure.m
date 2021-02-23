@@ -12,16 +12,13 @@ function F1_Measure = F1_Measure( PredictOutputLable, TureLable )
 PostiveIndex = find(TureLable == 1);
 NegativeIndex = find(TureLable == 0);
 
-PostiveNum = find(TureLable == 1);
-NegativeNum = find(TureLable == 0);
-
 TurePostive = find(TureLable(PostiveIndex, :) == PredictOutputLable(PostiveIndex, :));
 TurePostiveNum = size(TurePostive, 1);%TP
-FalseNegativeNum = PostiveNum - TurePostiveNum;%FN
+FalseNegativeNum = size(PostiveIndex, 1) - TurePostiveNum;%FN
 
 TureNegative = find(TureLable(NegativeIndex, :) == PredictOutputLable(NegativeIndex, :));
 TureNegativeNum = size(TureNegative, 1);%TN
-FalsePostiveNum = NegativeNum - TureNegativeNum;%FP
+FalsePostiveNum = size(NegativeIndex, 1) - TureNegativeNum;%FP
 
 Precision = TurePostiveNum/(TurePostiveNum + FalsePostiveNum);
 Recall = TurePostiveNum/(TurePostiveNum + FalseNegativeNum);
